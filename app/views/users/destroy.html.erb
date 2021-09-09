@@ -1,0 +1,4 @@
+<p> Email <%= @user.email %> </p>
+<p> Name <%= @user.name %> </p>
+<%= link_to 'index', users_path %>
+<%= link_to 'recreate', "/create_fast?name=#{@user.name}&email=#{@user.email}" %>
