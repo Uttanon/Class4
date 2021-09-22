@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 	  	end
   	end
   	if(@usermatch == false)
-  		redirect_to login_fail_path
+  		render :_loginfail
   	end
   end
   

@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :users
   get "create_fast", to: "users#create_fast"
   get "main", to: "users#login_page"
-  get "login_fail", to: "users#login_fail"
   post "main", to: "users#check_login"
   get "users/:user_id/posts/new", to: "users#create_post", as: "new_post"
   post "users/:user_id/posts/new", to: "users#add_post", as: "add_post"

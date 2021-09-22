@@ -1,0 +1,6 @@
+= form_with(model: @post, url:url ) do |form|
+  .field
+    = form.label :Message
+    = form.text_field :msg
+  .actions
+    = form.submit

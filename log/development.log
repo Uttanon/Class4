@@ -10690,3 +10690,602 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 19ms (Views: 15.5ms | ActiveRecord: 0.3ms | Allocations: 5470)
 
 
+Started GET "/" for 127.0.0.1 at 2021-09-22 21:52:15 +0700
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.2ms | Allocations: 490)
+Completed 200 OK in 24ms (Views: 10.4ms | ActiveRecord: 0.0ms | Allocations: 3622)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-09-22 21:52:19 +0700
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:18
+  Rendered users/index.html.erb within layouts/application (Duration: 13.4ms | Allocations: 6277)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.0ms | Allocations: 12271)
+Completed 200 OK in 40ms (Views: 37.2ms | ActiveRecord: 0.5ms | Allocations: 15726)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2021-09-22 21:52:23 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:124:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:45
+  Rendered users/show.html.erb within layouts/application (Duration: 12.0ms | Allocations: 6015)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.5ms | Allocations: 8968)
+Completed 200 OK in 38ms (Views: 26.6ms | ActiveRecord: 0.7ms | Allocations: 14422)
+
+
+Started GET "/users/1/posts/1/edit" for 127.0.0.1 at 2021-09-22 21:52:24 +0700
+Processing by UsersController#edit_post_page as HTML
+  Parameters: {"user_id"=>"1", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:104:in `edit_post_page'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:105:in `edit_post_page'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit_post_page.html.erb within layouts/application
+  Rendered users/edit_post_page.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2147)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 2227)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.2ms | Allocations: 4523)
+
+
+  
+ActionView::Template::Error (Missing partial users/_postform, application/_postform with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}. Searched in:
+  * "/home/uttanon/class4/app/views"
+  * "/home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/actiontext-6.1.4.1/app/views"
+  * "/home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/actionmailbox-6.1.4.1/app/views"
+):
+    1: <h1>Edit Post</h1>
+    2: <%= render "postform" , url: update_post_path(params[:user_id],params[:post_id])%>
+  
+app/views/users/edit_post_page.html.erb:2
+Started GET "/users/1/posts/1/edit" for 127.0.0.1 at 2021-09-22 21:54:00 +0700
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#edit_post_page as HTML
+  Parameters: {"user_id"=>"1", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:104:in `edit_post_page'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:105:in `edit_post_page'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit_post_page.html.erb within layouts/application
+  Rendered users/edit_post_page.html.erb within layouts/application (Duration: 7.4ms | Allocations: 2417)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 2511)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 0.8ms | Allocations: 21620)
+
+
+  
+ActionView::Template::Error (Missing partial users/_postform, application/_postform with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder, :haml]}. Searched in:
+  * "/home/uttanon/class4/app/views"
+  * "/home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/actiontext-6.1.4.1/app/views"
+  * "/home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/actionmailbox-6.1.4.1/app/views"
+):
+    1: <h1>Edit Post</h1>
+    2: <%= render "postform" , url: update_post_path(params[:user_id],params[:post_id])%>
+  
+app/views/users/edit_post_page.html.erb:2
+Started GET "/users/1/posts/1/edit" for 127.0.0.1 at 2021-09-22 21:54:32 +0700
+Processing by UsersController#edit_post_page as HTML
+  Parameters: {"user_id"=>"1", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:104:in `edit_post_page'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:105:in `edit_post_page'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit_post_page.html.erb within layouts/application
+  Rendered users/edit_post_page.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1798)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 1873)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.1ms | Allocations: 4768)
+
+
+  
+ActionView::Template::Error (Missing partial users/_postform, application/_postform with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder, :haml]}. Searched in:
+  * "/home/uttanon/class4/app/views"
+  * "/home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/actiontext-6.1.4.1/app/views"
+  * "/home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/actionmailbox-6.1.4.1/app/views"
+):
+    1: <h1>Edit Post</h1>
+    2: <%= render "postform" , url: update_post_path(params[:user_id],params[:post_id])%>
+  
+app/views/users/edit_post_page.html.erb:2
+Started GET "/users/1/posts/1/edit" for 127.0.0.1 at 2021-09-22 21:54:33 +0700
+Processing by UsersController#edit_post_page as HTML
+  Parameters: {"user_id"=>"1", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:104:in `edit_post_page'
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:105:in `edit_post_page'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit_post_page.html.erb within layouts/application
+  Rendered users/edit_post_page.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1116)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 1185)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.1ms | Allocations: 3184)
+
+
+  
+ActionView::Template::Error (Missing partial users/_postform, application/_postform with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder, :haml]}. Searched in:
+  * "/home/uttanon/class4/app/views"
+  * "/home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/actiontext-6.1.4.1/app/views"
+  * "/home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/actionmailbox-6.1.4.1/app/views"
+):
+    1: <h1>Edit Post</h1>
+    2: <%= render "postform" , url: update_post_path(params[:user_id],params[:post_id])%>
+  
+app/views/users/edit_post_page.html.erb:2
+Started GET "/users/1/posts/1/edit" for 127.0.0.1 at 2021-09-22 21:54:35 +0700
+Processing by UsersController#edit_post_page as HTML
+  Parameters: {"user_id"=>"1", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:104:in `edit_post_page'
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:105:in `edit_post_page'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit_post_page.html.erb within layouts/application
+  Rendered users/edit_post_page.html.erb within layouts/application (Duration: 9.2ms | Allocations: 1117)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 1186)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.1ms | Allocations: 2965)
+
+
+  
+ActionView::Template::Error (Missing partial users/_postform, application/_postform with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder, :haml]}. Searched in:
+  * "/home/uttanon/class4/app/views"
+  * "/home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/actiontext-6.1.4.1/app/views"
+  * "/home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/actionmailbox-6.1.4.1/app/views"
+):
+    1: <h1>Edit Post</h1>
+    2: <%= render "postform" , url: update_post_path(params[:user_id],params[:post_id])%>
+  
+app/views/users/edit_post_page.html.erb:2
+Started GET "/users/1/posts/1/edit" for 127.0.0.1 at 2021-09-22 21:55:01 +0700
+Processing by UsersController#edit_post_page as HTML
+  Parameters: {"user_id"=>"1", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:104:in `edit_post_page'
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:105:in `edit_post_page'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit_post_page.html.erb within layouts/application
+  Rendered users/_postform.html.haml (Duration: 3.5ms | Allocations: 2122)
+  Rendered users/edit_post_page.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2526)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 2601)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.1ms | Allocations: 5263)
+
+
+  
+ActionView::Template::Error (Invalid tag: "% div class="field"".):
+    1: = form_with(model: @post, url:url ) do |form|
+    2:   % div class="field"
+    3:     = form.label :Message
+    4:     = form.text_field :msg
+    5:   % div class="actions"
+  
+app/views/users/_postform.html.haml:2
+app/views/users/edit_post_page.html.erb:2
+Started GET "/users/1/posts/1/edit" for 127.0.0.1 at 2021-09-22 21:56:42 +0700
+Processing by UsersController#edit_post_page as HTML
+  Parameters: {"user_id"=>"1", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:104:in `edit_post_page'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:105:in `edit_post_page'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit_post_page.html.erb within layouts/application
+  Rendered users/_postform.html.haml (Duration: 23.9ms | Allocations: 8554)
+  Rendered users/edit_post_page.html.erb within layouts/application (Duration: 25.2ms | Allocations: 8963)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.2ms | Allocations: 14799)
+Completed 200 OK in 49ms (Views: 45.6ms | ActiveRecord: 0.2ms | Allocations: 17728)
+
+
+Started GET "/main" for 127.0.0.1 at 2021-09-22 22:59:09 +0700
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login_page as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/login_page.html.erb within layouts/application
+  Rendered users/login_page.html.erb within layouts/application (Duration: 6.1ms | Allocations: 5032)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | Allocations: 10904)
+Completed 200 OK in 43ms (Views: 18.9ms | ActiveRecord: 0.0ms | Allocations: 14471)
+
+
+Started POST "/main" for 127.0.0.1 at 2021-09-22 22:59:14 +0700
+Processing by UsersController#check_login as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"e", "password"=>"[FILTERED]", "commit"=>"Save "}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:76:in `check_login'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 21ms (ActiveRecord: 0.7ms | Allocations: 7799)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2021-09-22 22:59:14 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:124:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:45
+  Rendered users/show.html.erb within layouts/application (Duration: 21.7ms | Allocations: 6084)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.6ms | Allocations: 9040)
+Completed 200 OK in 41ms (Views: 32.3ms | ActiveRecord: 1.3ms | Allocations: 14449)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2021-09-22 22:59:18 +0700
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:124:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 6.0ms | Allocations: 3600)
+  Rendered users/edit.html.erb within layouts/application (Duration: 7.1ms | Allocations: 4077)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.4ms | Allocations: 7098)
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.1ms | Allocations: 8467)
+
+
+Started PATCH "/users/1" for 127.0.0.1 at 2021-09-22 22:59:23 +0700
+Processing by UsersController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"e", "password"=>"[FILTERED]", "name"=>"Non", "address"=>"Moon", "postal_code"=>"99999", "birthdate(1i)"=>"2021", "birthdate(2i)"=>"9", "birthdate(3i)"=>"22"}, "commit"=>"Update User", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:124:in `set_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:41:in `block in update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "e"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `block in update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:41:in `block in update'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 20ms (ActiveRecord: 0.3ms | Allocations: 4644)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2021-09-22 22:59:23 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:124:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:45
+  Rendered users/show.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1032)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 3932)
+Completed 200 OK in 26ms (Views: 18.5ms | ActiveRecord: 0.5ms | Allocations: 5541)
+
+
+Started GET "/users/1/posts/new" for 127.0.0.1 at 2021-09-22 22:59:26 +0700
+Processing by UsersController#create_post as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/create_post.html.erb within layouts/application
+  Rendered users/_postform.html.haml (Duration: 7.7ms | Allocations: 4779)
+  Rendered users/create_post.html.erb within layouts/application (Duration: 10.9ms | Allocations: 5158)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 8134)
+Completed 200 OK in 33ms (Views: 21.5ms | ActiveRecord: 0.0ms | Allocations: 8842)
+
+
+Started POST "/users/1/posts/new" for 127.0.0.1 at 2021-09-22 22:59:37 +0700
+Processing by UsersController#add_post as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"msg"=>"HELLO I AUI"}, "commit"=>"Create Post", "user_id"=>"1"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:98:in `add_post'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:98:in `add_post'
+  [1m[36mPost Create (5.7ms)[0m  [1m[32mINSERT INTO "posts" ("user_id", "msg", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["msg", "HELLO I AUI"], ["created_at", "2021-09-22 15:59:37.879681"], ["updated_at", "2021-09-22 15:59:37.879681"]]
+  ↳ app/controllers/users_controller.rb:98:in `add_post'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:98:in `add_post'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 21ms (ActiveRecord: 8.0ms | Allocations: 6387)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2021-09-22 22:59:37 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:124:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:45
+  Rendered users/show.html.erb within layouts/application (Duration: 10.6ms | Allocations: 1178)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.7ms | Allocations: 4066)
+Completed 200 OK in 29ms (Views: 20.7ms | ActiveRecord: 0.9ms | Allocations: 5681)
+
+
+Started GET "/users/1/posts/7/edit" for 127.0.0.1 at 2021-09-22 22:59:41 +0700
+Processing by UsersController#edit_post_page as HTML
+  Parameters: {"user_id"=>"1", "post_id"=>"7"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:104:in `edit_post_page'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:105:in `edit_post_page'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit_post_page.html.erb within layouts/application
+  Rendered users/_postform.html.haml (Duration: 0.9ms | Allocations: 689)
+  Rendered users/edit_post_page.html.erb within layouts/application (Duration: 3.3ms | Allocations: 935)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.5ms | Allocations: 4018)
+Completed 200 OK in 20ms (Views: 13.0ms | ActiveRecord: 0.3ms | Allocations: 6088)
+
+
+Started PATCH "/users/1/posts/7/edit" for 127.0.0.1 at 2021-09-22 22:59:42 +0700
+Processing by UsersController#update_post as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"msg"=>"HELLO I AUI"}, "commit"=>"Update Post", "user_id"=>"1", "post_id"=>"7"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:109:in `update_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `update_post'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 8ms (ActiveRecord: 0.2ms | Allocations: 2176)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2021-09-22 22:59:42 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:124:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:45
+  Rendered users/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1175)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.0ms | Allocations: 4060)
+Completed 200 OK in 29ms (Views: 22.0ms | ActiveRecord: 0.2ms | Allocations: 5667)
+
+
+Started DELETE "/users/1/posts/7/delete" for 127.0.0.1 at 2021-09-22 22:59:44 +0700
+Processing by UsersController#delete_post_page as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user_id"=>"1", "post_id"=>"7"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:116:in `delete_post_page'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `delete_post_page'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:118:in `delete_post_page'
+  [1m[36mPost Destroy (0.4ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/users_controller.rb:118:in `delete_post_page'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:118:in `delete_post_page'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 19ms (ActiveRecord: 3.6ms | Allocations: 5463)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2021-09-22 22:59:44 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:124:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:45
+  Rendered users/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1008)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | Allocations: 3892)
+Completed 200 OK in 23ms (Views: 16.6ms | ActiveRecord: 0.2ms | Allocations: 5465)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-09-22 22:59:55 +0700
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:18
+  Rendered users/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1290)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 4187)
+Completed 200 OK in 12ms (Views: 11.6ms | ActiveRecord: 0.1ms | Allocations: 4812)
+
+
+Started GET "/" for 127.0.0.1 at 2021-09-22 23:54:49 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/uttanon/.rvm/gems/ruby-3.0.2@wp/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 5.8ms | Allocations: 264)
+Completed 200 OK in 11ms (Views: 10.4ms | Allocations: 1262)
+
+
+Started GET "/main" for 127.0.0.1 at 2021-09-22 23:54:52 +0700
+Processing by UsersController#login_page as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/login_page.html.erb within layouts/application
+  Rendered users/login_page.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2577)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.2ms | Allocations: 5741)
+Completed 200 OK in 40ms (Views: 38.9ms | Allocations: 8596)
+
+
+Started POST "/main" for 127.0.0.1 at 2021-09-22 23:54:57 +0700
+Processing by UsersController#check_login as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"asdas", "password"=>"[FILTERED]", "commit"=>"Save "}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:76:in `check_login'
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:76:in `check_login'
+Redirected to http://localhost:3000/login_fail
+Completed 302 Found in 26ms (ActiveRecord: 4.5ms | Allocations: 1726)
+
+
+Started GET "/login_fail" for 127.0.0.1 at 2021-09-22 23:54:57 +0700
+Processing by UsersController#login_fail as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/login_fail.html.erb within layouts/application
+  Rendered users/login_fail.html.erb within layouts/application (Duration: 0.5ms | Allocations: 170)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 3057)
+Completed 200 OK in 22ms (Views: 21.2ms | ActiveRecord: 0.0ms | Allocations: 3650)
+
+
+Started GET "/main" for 127.0.0.1 at 2021-09-22 23:55:01 +0700
+Processing by UsersController#login_page as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/login_page.html.erb within layouts/application
+  Rendered users/login_page.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2188)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 4971)
+Completed 200 OK in 16ms (Views: 15.8ms | ActiveRecord: 0.0ms | Allocations: 5422)
+
+
+Started POST "/main" for 127.0.0.1 at 2021-09-22 23:56:19 +0700
+Processing by UsersController#check_login as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"d", "password"=>"[FILTERED]", "commit"=>"Save "}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:76:in `check_login'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:76:in `check_login'
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 1.3ms | Allocations: 10494)
+
+
+  
+NameError (undefined local variable or method `login_fail_path' for #<UsersController:0x00000000009e98>
+Did you mean?  login_fail):
+  
+app/controllers/users_controller.rb:83:in `check_login'
+Started GET "/main" for 127.0.0.1 at 2021-09-22 23:56:29 +0700
+Processing by UsersController#login_page as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/login_page.html.erb within layouts/application
+  Rendered users/login_page.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2984)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.2ms | Allocations: 6149)
+Completed 200 OK in 23ms (Views: 19.1ms | ActiveRecord: 0.0ms | Allocations: 7552)
+
+
+Started POST "/main" for 127.0.0.1 at 2021-09-22 23:58:03 +0700
+Processing by UsersController#check_login as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"", "password"=>"[FILTERED]", "commit"=>"Save "}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:76:in `check_login'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:76:in `check_login'
+  Rendering layout layouts/application.html.erb
+  Rendering users/_loginfail.html.erb within layouts/application
+  Rendered users/_loginfail.html.erb within layouts/application (Duration: 0.5ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 3301)
+Completed 200 OK in 50ms (Views: 27.0ms | ActiveRecord: 1.1ms | Allocations: 11345)
+
+
+Started GET "/main" for 127.0.0.1 at 2021-09-22 23:58:05 +0700
+Processing by UsersController#login_page as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/login_page.html.erb within layouts/application
+  Rendered users/login_page.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2712)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 5498)
+Completed 200 OK in 33ms (Views: 32.2ms | ActiveRecord: 0.0ms | Allocations: 5998)
+
+
+Started POST "/main" for 127.0.0.1 at 2021-09-22 23:58:07 +0700
+Processing by UsersController#check_login as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"", "password"=>"[FILTERED]", "commit"=>"Save "}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:76:in `check_login'
+  Rendering layout layouts/application.html.erb
+  Rendering users/_loginfail.html.erb within layouts/application
+  Rendered users/_loginfail.html.erb within layouts/application (Duration: 0.2ms | Allocations: 67)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 2953)
+Completed 200 OK in 19ms (Views: 16.1ms | ActiveRecord: 0.1ms | Allocations: 4129)
+
+
+Started GET "/main" for 127.0.0.1 at 2021-09-22 23:58:08 +0700
+Processing by UsersController#login_page as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/login_page.html.erb within layouts/application
+  Rendered users/login_page.html.erb within layouts/application (Duration: 4.0ms | Allocations: 2188)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.7ms | Allocations: 4961)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.0ms | Allocations: 5412)
+
+
+Started POST "/main" for 127.0.0.1 at 2021-09-22 23:58:17 +0700
+Processing by UsersController#check_login as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"e", "password"=>"[FILTERED]", "commit"=>"Save "}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:76:in `check_login'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms | Allocations: 951)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2021-09-22 23:58:17 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:124:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:45
+  Rendered users/show.html.erb within layouts/application (Duration: 21.5ms | Allocations: 4890)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.5ms | Allocations: 7842)
+Completed 200 OK in 56ms (Views: 48.4ms | ActiveRecord: 1.0ms | Allocations: 10890)
+
+
+Started GET "/main" for 127.0.0.1 at 2021-09-22 23:58:23 +0700
+Processing by UsersController#login_page as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/login_page.html.erb within layouts/application
+  Rendered users/login_page.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2244)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 5042)
+Completed 200 OK in 10ms (Views: 9.9ms | ActiveRecord: 0.0ms | Allocations: 5523)
+
+
+Started POST "/main" for 127.0.0.1 at 2021-09-22 23:58:27 +0700
+Processing by UsersController#check_login as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"", "password"=>"[FILTERED]", "commit"=>"Save "}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:76:in `check_login'
+  Rendering layout layouts/application.html.erb
+  Rendering users/_loginfail.html.erb within layouts/application
+  Rendered users/_loginfail.html.erb within layouts/application (Duration: 0.1ms | Allocations: 67)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 2953)
+Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 0.1ms | Allocations: 4022)
+
+
+Started GET "/main" for 127.0.0.1 at 2021-09-22 23:58:29 +0700
+Processing by UsersController#login_page as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/login_page.html.erb within layouts/application
+  Rendered users/login_page.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2188)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 4961)
+Completed 200 OK in 23ms (Views: 22.9ms | ActiveRecord: 0.0ms | Allocations: 5412)
+
+
