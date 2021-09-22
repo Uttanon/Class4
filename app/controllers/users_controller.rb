@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+   @posts = User.find(@user.id).posts
   end
 
   # GET /users/new
@@ -62,15 +63,71 @@ class UsersController < ApplicationController
     @email = params[:email]
     User.create( name: @name, email: @email)
   end
-
+  
+  def login_page
+  
+  end
+  
+  def check_login
+	@loginEmail = params[:email]
+	@loginPassword = params[:password]
+	@users = User.all
+	@usermatch = false
+	@users.each do |checkuser|
+		if(@loginEmail == checkuser.email && @loginPassword == checkuser.password)
+	  		redirect_to user_path(checkuser.id), notice: "Login successfully."
+	  		@usermatch = true
+	  	end
+  	end
+  	if(@usermatch == false)
+  		redirect_to login_fail_path
+  	end
+  end
+  
+  def login_fail
+  	
+  end
+  
+  def create_post
+	@post = Post.new()
+	@post.user_id = params[:user_id]
+  end
+  def add_post
+  	@post = Post.new(post_params)
+  	@post.user_id = params[:user_id]
+	if @post.save
+		redirect_to user_url(@post.user_id), notice: "Post was successfully created."
+    	end
+  end
+  
+  def edit_post_page
+  	@user = User.find(params[:user_id])
+	@post = @user.posts.find(params[:post_id])
+  end
+  
+  def update_post
+  	@user = User.find(params[:user_id])
+  	@post = @user.posts.find(params[:post_id])
+  	@post.update(post_params)
+  	redirect_to user_url(@user.id), notice: "Edit post successfully."
+  end
+  
+  def delete_post_page
+  	@user = User.find(params[:user_id])
+  	@post = @user.posts.find(params[:post_id])
+  	@post.destroy()
+  	redirect_to user_url(@user.id), notice: "Delete post successfully."
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
-
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :name, :birthdate, :address, :postal_code)
+      params.require(:user).permit(:email, :name, :birthdate, :address, :postal_code, :password)
+    end
+    def post_params
+      params.require(:post).permit(:user_id, :msg)
     end
 end

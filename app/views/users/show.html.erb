@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <strong>Password:</strong>
+  <%= @user.password %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
@@ -25,5 +30,27 @@
   <%= @user.birthdate %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user) %>
+<%#= "<%= link_to 'Back', users_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>Created</th>
+      <th>Updated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.msg %></td>
+        <td><%= post.created_at %></td>
+        <td><%= post.updated_at %></td>
+        <td><%= link_to 'Edit', edit_post_url(@user.id,post.id)%></td>
+        <td><%= link_to 'Destroy', delete_post_url(@user.id,post.id) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Create Post', new_post_path(@user.id) %>

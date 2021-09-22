@@ -1,0 +1,9 @@
+<%= form_with(model: @post, url:url ) do |form| %>
+	<div class="field">
+	    <%= form.label :Message %>
+	    <%= form.text_field :msg %>
+	</div>
+	<div class="actions">
+	    <%= form.submit %>
+	</div>
+<% end %>
