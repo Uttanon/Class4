@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-
+  before_action :logged_in, except: %i[ login_page login_fail ]
   # GET /users or /users.json
   def index
     @users = User.all
@@ -8,7 +8,11 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-   @posts = User.find(@user.id).posts
+  	if(logged_in)
+   		@posts = User.find(@user.id).posts
+   	else
+   		return
+   	end
   end
 
   # GET /users/new
@@ -65,20 +69,19 @@ class UsersController < ApplicationController
   end
   
   def login_page
-  
+    	session[:user_id] = nil
   end
   
   def check_login
 	@loginEmail = params[:email]
 	@loginPassword = params[:password]
-	@users = User.all
 	@usermatch = false
-	@users.each do |checkuser|
-		if(@loginEmail == checkuser.email && @loginPassword == checkuser.password)
-	  		redirect_to user_path(checkuser.id), notice: "Login successfully."
-	  		@usermatch = true
-	  	end
-  	end
+	@find = User.find_by(email:@loginEmail)
+	if(@find && @find.authenticate(@loginPassword))
+	  	redirect_to user_path(@find.id), notice: "Login successfully."
+	  	@usermatch = true
+	  	session[:user_id] = @find.id
+	end
   	if(@usermatch == false)
   		render :_loginfail
   	end
@@ -94,7 +97,6 @@ class UsersController < ApplicationController
   end
   def add_post
   	@post = Post.new(post_params)
-  	@post.user_id = params[:user_id]
 	if @post.save
 		redirect_to user_url(@post.user_id), notice: "Post was successfully created."
     	end
@@ -119,6 +121,13 @@ class UsersController < ApplicationController
   	redirect_to user_url(@user.id), notice: "Delete post successfully."
   end
   private
+    def logged_in
+  	if(session[:user_id])
+  		return true
+  	else
+  		redirect_to main_path, notice: "Please login."
+  	end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
