@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
-  before_action :logged_in, except: %i[ login_page login_fail ]
+  before_action :set_user, only: %i[ show edit update destroy ] 
+  before_action :logged_in, except: %i[ login_page check_login login_fail ]
+  before_action :match_id_profile, only: %i[ show edit update destroy]
+  before_action :match_id_post, only: %i[create_post add_post edit_post_page update_post delete_post_page]
   # GET /users or /users.json
   def index
     @users = User.all
@@ -30,6 +32,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to @user, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
@@ -43,6 +46,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        session[:user_id] = @user.id
         format.html { redirect_to @user, notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -54,6 +58,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    session[:user_id] = nil
     @user.destroy
     render 'destroy'
     # respond_to do |format|
@@ -113,7 +118,7 @@ class UsersController < ApplicationController
   	@post.update(post_params)
   	redirect_to user_url(@user.id), notice: "Edit post successfully."
   end
-  
+
   def delete_post_page
   	@user = User.find(params[:user_id])
   	@post = @user.posts.find(params[:post_id])
@@ -128,6 +133,20 @@ class UsersController < ApplicationController
   		redirect_to main_path, notice: "Please login."
   	end
     end
+    def match_id_profile
+    	if(session[:user_id].to_s == params[:id])
+    		return true
+    	else
+    		redirect_to user_path(session[:user_id]), notice: "You cannot manipulate other account(s)!"
+    	end
+    end
+    def match_id_post
+    	if(session[:user_id].to_s == params[:user_id])
+    		return true
+    	else
+    		redirect_to user_path(session[:user_id]), notice: "You cannot manipulate other account(s) posts!"
+    	end
+    end    
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
